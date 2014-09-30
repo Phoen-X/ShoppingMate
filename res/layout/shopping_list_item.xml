@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <RelativeLayout
+      android:layout_width="fill_parent"
+      android:layout_height="45dp"
+      android:layout_marginLeft="10dp"
+      android:layout_marginRight="10dp"
+      android:paddingBottom="10dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Large Text"
+        android:id="@+id/itemName"
+        android:textStyle="bold"
+        android:layout_alignParentBottom="true"
+        android:layout_toLeftOf="@+id/itemQuantity"
+        android:layout_alignBaseline="@+id/itemQuantity"
+        android:layout_alignParentStart="true"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:id="@+id/itemType"
+        android:layout_gravity="right"
+        android:gravity="bottom"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:paddingLeft="5dp"
+        android:text="kg."/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="10"
+        android:id="@+id/itemQuantity"
+        android:layout_alignParentTop="false"
+        android:layout_toLeftOf="@+id/itemType"
+        android:layout_alignParentBottom="true"
+        android:gravity="bottom|right"/>
+
+  </RelativeLayout>
+
+</LinearLayout>

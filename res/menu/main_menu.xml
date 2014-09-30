@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <group>
+    <item android:id="@+id/menu_add_purchase"
+          android:icon="@drawable/btn_add"
+          android:title="@string/add_btn_text"
+          android:showAsAction="always"
+        />
+    <item android:id="@+id/menu_address_settings"
+          android:title="@string/settings_address"/>
+    <item android:id="@+id/menu_types_settings"
+          android:title="@string/settings_types_config"/>
+
+    <item
+        android:id="@+id/menu_stop_gps"
+        android:title="@string/stop_gps_check"/>
+    <item android:id="@+id/menu_settings"
+          android:title="@string/menu_settings"/>
+  </group>
+</menu>

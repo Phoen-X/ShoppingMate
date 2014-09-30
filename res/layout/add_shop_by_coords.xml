@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:padding="10dp">
+
+  <LinearLayout
+      android:orientation="horizontal"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/latVal"
+        android:layout_gravity="left"
+        android:layout_weight="1"
+        android:onClick="cleanupErrorsAddShopByCoords"
+        android:hint="@string/add_shop_latitude"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:inputType="numberDecimal"
+        android:ems="10"
+        android:id="@+id/longVal"
+        android:layout_weight="1"
+        android:layout_gravity="right"
+        android:onClick="cleanupErrorsAddShopByCoords"
+        android:hint="@string/add_shop_longitude"/>
+
+  </LinearLayout>
+
+  <EditText
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:id="@+id/description"
+      android:hint="@string/add_shop_description"
+      android:onClick="cleanupErrorsAddShopByCoords"
+      android:singleLine="true"/>
+
+  <Button
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="@string/add_btn_text"
+      android:id="@+id/btnAddByCoords"
+      android:paddingTop="10dp"
+      android:onClick="addShopByCoords"/>
+
+</LinearLayout>

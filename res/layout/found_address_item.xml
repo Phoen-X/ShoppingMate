@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+
+  <RelativeLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_gravity="top">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/selectedImg"
+        android:layout_alignParentTop="false"
+        android:layout_alignParentEnd="false"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:src="@android:drawable/btn_radio"
+        android:baselineAlignBottom="false"
+        android:minWidth="20dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceMedium"
+        android:text="Васильковская, 3Б"
+        android:id="@+id/mainAddress"
+        android:singleLine="false"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/selectedImg"
+        android:layout_toRightOf="@+id/selectedImg"/>
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceSmall"
+        android:text="Украина, Киев"
+        android:id="@+id/secondaryAddress"
+        android:layout_toRightOf="@+id/selectedImg"
+        android:layout_alignBaseline="@+id/selectedImg"
+        android:layout_alignBottom="@+id/selectedImg"/>
+
+  </RelativeLayout>
+</LinearLayout>

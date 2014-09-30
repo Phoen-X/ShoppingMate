@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="com.phoenix.shopping"
+          android:versionCode="1"
+          android:versionName="1.0">
+
+  <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION"/>
+  <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION"/>
+  <uses-permission android:name="android.permission.INTERNET"/>
+  <uses-permission android:name="android.permission.ACCESS_MOCK_LOCATION"/>
+  <uses-permission android:name="android.permission.VIBRATE"/>
+
+  <uses-sdk android:minSdkVersion="14"
+            android:targetSdkVersion="19"/>
+  <application android:label="@string/app_name"
+               android:icon="@drawable/shopping_list"
+               android:theme="@android:style/Theme.Holo.Light">
+    <activity android:name="com.phoenix.shopping.activity.ShoppingListActivity"
+              android:label="@string/app_name">
+      <intent-filter>
+        <action android:name="android.intent.action.MAIN"/>
+        <category android:name="android.intent.category.LAUNCHER"/>
+      </intent-filter>
+    </activity>
+    <activity android:name="com.phoenix.shopping.activity.AddPurchaseActivity"
+              android:label="@string/title_add_purchase"
+              android:theme="@android:style/Theme.Holo.Light.Dialog"/>
+    <activity android:name="com.phoenix.shopping.activity.PurchaseTypesListActivity"
+              android:label="@string/title_types_list"/>
+    <activity android:name="com.phoenix.shopping.activity.AddPurchaseTypeActivity"
+              android:label="@string/title_add_purchase_type"
+              android:theme="@android:style/Theme.Holo.Light.Dialog"/>
+    <activity android:name="com.phoenix.shopping.activity.ShopListActivity"
+              android:label="@string/title_shop_list"/>
+    <activity android:name="com.phoenix.shopping.activity.AddShopActivity"
+              android:label="@string/title_add_shop"/>
+    <activity android:name="com.phoenix.shopping.activity.AddShopByCoordsActivity"
+              android:label="@string/title_add_shop"
+              android:theme="@android:style/Theme.Holo.Light.Dialog"/>
+    <activity android:name="com.phoenix.shopping.activity.MainPreferencesActivity"/>
+
+    <service android:name="com.phoenix.shopping.service.LocationListenerService"
+             android:label="com.example.buylist.LocationListenerService"/>
+
+    <receiver android:name="com.phoenix.shopping.DeviceBootReceiver">
+      <intent-filter>
+        <action android:name="android.intent.action.BOOT_COMPLETED"/>
+      </intent-filter>
+    </receiver>
+  </application>
+</manifest>

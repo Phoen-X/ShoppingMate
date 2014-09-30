@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+  <PreferenceCategory android:title="GPS settings" android:key="pref_group_gps">
+    <EditTextPreference android:key="pref_check_frequency"
+                        android:title="Checking frequency"
+                        android:inputType="number"
+                        android:defaultValue="@string/default_check_frequency"
+                        android:maxLength="3"
+                        android:numeric="integer"/>
+    <EditTextPreference android:key="pref_forget_time"
+                        android:title="Forget time"
+                        android:inputType="number"
+                        android:defaultValue="@string/default_forget_time"
+                        android:numeric="integer"
+                        android:maxLength="3"/>
+    <EditTextPreference android:key="pref_notify_distance"
+                        android:title="Distance to notify"
+                        android:defaultValue="@string/default_notify_distance"
+                        android:numeric="integer"
+                        android:inputType="number"
+                        android:maxLength="5"/>
+  </PreferenceCategory>
+</PreferenceScreen>

@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+  <string name="app_name">Список покупок</string>
+  <string name="title_add_purchase">Добавить покупку</string>
+  <string name="title_add_purchase_type">Добавить единицу измерения</string>
+  <string name="buy_list_header">ПОМЕНЯЙ МЕНЯ</string>
+  <string name="buy_list_heading">ПОМЕНЯЙ МЕНЯ</string>
+  <string name="hello_msg">ПОМЕНЯЙ МЕНЯ</string>
+  <string name="empty_list_msg">Список пуст</string>
+  <string name="add_btn_text">Добавить</string>
+  <string name="purchase_name">Название</string>
+  <string name="purchase_quantity">Кол-во</string>
+  <string name="purchase_name_hint">Название</string>
+  <string name="purchase_quantity_hint">Кол-во</string>
+  <string name="add_purchase_submit_btn">Добавить</string>
+  <string name="msg_purchase_added">Покупка добавлена</string>
+  <!--Settings-->
+  <string name="settings_address">Магазины</string>
+  <string name="settings_types_config">Единицы измерения</string>
+  <!--Error messages-->
+  <string name="err_purchase_name_empty">Введите название покупки</string>
+  <string name="err_purchase_quantity_empty">Введите кол-во</string>
+  <string name="err_purchase_quantity_nan">Должно быть числом</string>
+  <string name="err_purchase_type_empty">Введите название</string>
+  <string name="add_type_btn">Добавить</string>
+  <string name="add_type_name_hint">Название</string>
+  <string name="title_types_list">Единицы измерения</string>
+  <string name="btn_add_shop">Добавить</string>
+  <string name="stop_gps_check">Остановить GPS</string>
+  <string name="title_add_shop">Добавить магазин</string>
+  <string name="title_shop_list">Магазины</string>
+  <string name="notification_text">У вас есть не купленные товары</string>
+  <string name="menu_settings">Настройки</string>
+  <string name="menu_add_shop_coords">По координатам</string>
+  <string name="btn_add_shop_addr">По адресу</string>
+
+  <string name="add_shop_latitude">Широта</string>
+  <string name="add_shop_longitude">Долгота</string>
+  <string name="add_shop_description">Описание</string>
+  <string name="add_shop_address">Enter address</string>
+</resources>

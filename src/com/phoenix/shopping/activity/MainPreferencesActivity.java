@@ -1,34 +1,22 @@
 package com.phoenix.shopping.activity;
 
+import android.app.Activity;
 import android.os.Bundle;
-import android.preference.PreferenceActivity;
-import com.example.shopping.R;
+import com.phoenix.shopping.R;
+import com.phoenix.shopping.fragment.MainPreferencesFragment;
 
 /**
  * Class description here.
+ *
  * @author Vadim Vygulyarniy (http://www.luxoft.com).
  */
-public class MainPreferencesActivity extends PreferenceActivity {
-
-  private static final String TAG = "SHOP_LIST_PREFS";
-
-  @Override
-  public void onCreate(Bundle savedInstanceState) {
-    super.onCreate(savedInstanceState);
-    addPreferencesFromResource(R.xml.main_preferences);
-  }
-
-  /*@Override
-  protected void onStop() {
-    Intent gpsTracker = new Intent(this, LocationListenerService.class);
-    if(stopService(gpsTracker)) {
-      Log.d(TAG, "GPS tracker stopped");
-    } else {
-      Log.d(TAG, "GPS tracker failed to stop");
+public class MainPreferencesActivity extends Activity {
+    @Override
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.single_fragment);
+        getFragmentManager().beginTransaction()
+                .add(R.id.mainFragment, new MainPreferencesFragment())
+                .commit();
     }
-
-    startService(gpsTracker);
-
-    super.onStop();
-  }*/
 }

@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import com.example.shopping.R;
+import com.phoenix.shopping.R;
 import com.phoenix.shopping.data.DataProvider;
 import com.phoenix.shopping.data.SQLiteDataProvider;
 import com.phoenix.shopping.util.ValidationUtils;

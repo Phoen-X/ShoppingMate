@@ -8,7 +8,7 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.example.shopping.R;
+import com.phoenix.shopping.R;
 
 import java.util.List;
 

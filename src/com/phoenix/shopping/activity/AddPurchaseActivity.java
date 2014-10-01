@@ -6,7 +6,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
-import com.example.shopping.R;
+import com.phoenix.shopping.R;
 import com.phoenix.shopping.data.DataProvider;
 import com.phoenix.shopping.data.SQLiteDataProvider;
 import com.phoenix.shopping.data.model.Purchase;

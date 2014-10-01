@@ -43,4 +43,16 @@
   <string name="default_notify_distance">400</string>
   <string name="default_check_frequency">10</string>
   <string name="add_shop_address">Enter address</string>
+  <!-- preferences -->
+  <string name="pref_gps_settings">GPS settings</string>
+  <string name="pref_gps_enabled">Enable GPS tracking</string>
+  <string name="pref_check_frequency">Checking frequency</string>
+  <string name="pref_forget_time">Notification timeout</string>
+  <string name="pref_notify_distance">Distance to notify</string>
+  <string name="pref_detail_gps_status">GPS is %s</string>
+  <string name="pref_value_gps_on">on</string>
+  <string name="pref_value_gps_off">off</string>
+  <string name="pref_value_frequency">Your location is updated every %s minutes</string>
+  <string name="pref_value_forget_time">You will not be notified during %s minutes after last notification</string>
+  <string name="pref_value_react_distance">You will be notified when you are in %s meters after nearest shop</string>
 </resources>

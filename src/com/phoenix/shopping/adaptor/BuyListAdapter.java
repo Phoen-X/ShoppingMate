@@ -10,7 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.TextView;
-import com.example.shopping.R;
+import com.phoenix.shopping.R;
 import com.phoenix.shopping.data.model.Purchase;
 import com.phoenix.shopping.util.StringUtils;
 

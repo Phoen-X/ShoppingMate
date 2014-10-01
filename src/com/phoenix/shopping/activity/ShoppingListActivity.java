@@ -9,7 +9,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ListView;
-import com.example.shopping.R;
+import com.phoenix.shopping.R;
 import com.phoenix.shopping.adaptor.BuyListAdapter;
 import com.phoenix.shopping.data.DataProvider;
 import com.phoenix.shopping.data.SQLiteDataProvider;

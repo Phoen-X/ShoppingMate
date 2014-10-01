@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.*;
-import com.example.shopping.R;
+import com.phoenix.shopping.R;
 import com.phoenix.shopping.adaptor.FoundShopsAdapter;
 import com.phoenix.shopping.data.DataProvider;
 import com.phoenix.shopping.data.SQLiteDataProvider;

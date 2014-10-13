@@ -16,35 +16,51 @@ import com.phoenix.shopping.data.model.ShopAddress;
  * @author Vadim Vygulyarniy (http://www.luxoft.com).
  */
 public class ShopDescriptionSetupActivity extends Activity {
-    public static final int REQUEST_GET_DESCRIPTION = 271;
-    private EditText editDescription;
-    private ShopAddress address;
-    private static final String TAG = ShopDescriptionSetupActivity.class.getSimpleName();
+	public static final  int    REQUEST_GET_DESCRIPTION = 271;
+	private static final String TAG                     = ShopDescriptionSetupActivity.class.getSimpleName();
+	private EditText    editDescription;
+	private ShopAddress address;
 
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.shop_description_setup);
-        editDescription = (EditText) findViewById(R.id.shopDesc);
-        address = (ShopAddress) getIntent().getParcelableExtra("address");
-	    if(address != null) {
-		    editDescription.setText(address.getDescription());
-	    }
-        Log.d(TAG, "Extra is: " + address);
-    }
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.shop_description_setup);
+		editDescription = (EditText) findViewById(R.id.shopDesc);
+		address = (ShopAddress) getIntent().getParcelableExtra("address");
+		if (address != null) {
+			editDescription.setText(address.getDescription());
+		}
+		Log.d(TAG, "Extra is: " + address);
+	}
 
-    public void descriptionSubmitClick(View v) {
-        final Editable description = editDescription.getText();
-        if(description != null && description.length() > 0) {
-            Intent result = new Intent();
-            if(address != null) {
-                address.setDescription(description.toString());
-                result.putExtra("address", address);
-            }
-            setResult(RESULT_OK, result);
-            finish();
-        }
+	public void descriptionSubmitClick(View v) {
+		final Editable description = editDescription.getText();
+		if (!validateInput()) {
+			return;
+		}
 
-        //TODO data validation
-    }
+		if (description != null && description.length() > 0) {
+			Intent result = new Intent();
+			if (address != null) {
+				address.setDescription(description.toString());
+				result.putExtra("address", address);
+			}
+			setResult(RESULT_OK, result);
+			finish();
+		}
+		//TODO data validation
+	}
+
+	public void cleanValidation(View v) {
+		editDescription.setError(null);
+	}
+
+	private boolean validateInput() {
+		if (editDescription.getText().length() < 1) {
+			editDescription.setError(getString(R.string.error_empty_description));
+			return false;
+		}
+
+		return true;
+	}
 }

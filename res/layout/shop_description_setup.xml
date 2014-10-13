@@ -1,20 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-              android:orientation="vertical"
-              android:layout_width="match_parent"
-              android:layout_height="match_parent">
+	android:layout_width="match_parent"
+	android:layout_height="match_parent"
+	android:orientation="vertical">
 
-  <EditText
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:id="@+id/shopDesc"
-    android:hint="@string/shop_desc_hint"/>
+	<EditText
+		android:id="@+id/shopDesc"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:hint="@string/shop_desc_hint"
+		android:onClick="cleanValidation" />
 
-  <Button
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/shop_desc_save"
-    android:onClick="descriptionSubmitClick"
-    android:id="@+id/btnSubmit"/>
+	<Button
+		android:id="@+id/btnSubmit"
+		android:layout_width="match_parent"
+		android:layout_height="wrap_content"
+		android:onClick="descriptionSubmitClick"
+		android:text="@string/shop_desc_save" />
 </LinearLayout>

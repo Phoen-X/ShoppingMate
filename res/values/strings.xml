@@ -59,4 +59,5 @@
   <string name="pref_key_notify_distance">pref_notify_distance</string>
   <string name="shop_desc_hint">Enter shop description</string>
   <string name="shop_desc_save">Save</string>
+	<string name="error_empty_description">Enter description</string>
 </resources>

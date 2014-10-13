@@ -1,4 +1,4 @@
-package com.phoenix.shopping.activity;
+package com.phoenix.shopping.activity.shop;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -20,8 +20,6 @@ import com.phoenix.shopping.R;
 import com.phoenix.shopping.data.DataProvider;
 import com.phoenix.shopping.data.SQLiteDataProvider;
 import com.phoenix.shopping.data.model.ShopAddress;
-
-import static com.phoenix.shopping.activity.ShopDescriptionSetupActivity.REQUEST_GET_DESCRIPTION;
 
 /**
  * Class description here.
@@ -137,7 +135,7 @@ public class AddShopOnMapActivity extends Activity {
         address.setLatitude(addedPoint.latitude);
         Intent intent = new Intent(this, ShopDescriptionSetupActivity.class);
         intent.putExtra("address", address);
-        startActivityForResult(intent, REQUEST_GET_DESCRIPTION);
+        startActivityForResult(intent, ShopDescriptionSetupActivity.REQUEST_GET_DESCRIPTION);
     }
 
     private void setUpShops() {
@@ -173,7 +171,7 @@ public class AddShopOnMapActivity extends Activity {
                     }
                     break;
                 }
-                case REQUEST_GET_DESCRIPTION: {
+                case ShopDescriptionSetupActivity.REQUEST_GET_DESCRIPTION: {
                     Intent result = new Intent();
                     result.putExtra(FindAddressActivity.DATA_KEY, data.getSerializableExtra("address"));
                     //db.addAddress(checked);

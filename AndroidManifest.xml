@@ -44,16 +44,16 @@
     <activity android:name="com.phoenix.shopping.activity.AddPurchaseTypeActivity"
               android:label="@string/title_add_purchase_type"
               android:theme="@android:style/Theme.Holo.Light.Dialog"/>
-    <activity android:name="com.phoenix.shopping.activity.ShopListActivity"
+    <activity android:name=".activity.shop.ShopListActivity"
               android:label="@string/title_shop_list"/>
-    <activity android:name=".activity.FindAddressActivity"
+    <activity android:name=".activity.shop.FindAddressActivity"
               android:label="@string/title_add_shop"/>
-    <activity android:name="com.phoenix.shopping.activity.AddShopByCoordsActivity"
+    <activity android:name=".activity.shop.AddShopByCoordsActivity"
               android:label="@string/title_add_shop"
               android:theme="@android:style/Theme.Holo.Light.Dialog"/>
     <activity android:name=".activity.MainPreferencesActivity" />
-    <activity android:name=".activity.AddShopOnMapActivity" android:theme="@android:style/Theme.Holo.Light"/>
-    <activity android:name=".activity.ShopDescriptionSetupActivity"/>
+    <activity android:name=".activity.shop.AddShopOnMapActivity" android:theme="@android:style/Theme.Holo.Light"/>
+    <activity android:name=".activity.shop.ShopDescriptionSetupActivity"/>
 
     <service android:name="com.phoenix.shopping.service.LocationListenerService"
              android:label="com.example.buylist.LocationListenerService"/>

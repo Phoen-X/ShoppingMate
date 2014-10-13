@@ -1,10 +1,9 @@
-package com.phoenix.shopping.activity;
+package com.phoenix.shopping.activity.shop;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
-import android.location.Location;
 import android.os.Bundle;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -14,6 +13,7 @@ import com.phoenix.shopping.adaptor.FoundShopsAdapter;
 import com.phoenix.shopping.data.DataProvider;
 import com.phoenix.shopping.data.SQLiteDataProvider;
 import com.phoenix.shopping.data.model.ShopAddress;
+import com.phoenix.shopping.util.AddressUtils;
 
 import java.io.IOException;
 import java.util.List;
@@ -90,6 +90,7 @@ public class FindAddressActivity extends Activity {
         ShopAddress addr = new ShopAddress();
         addr.setLongitude(checked.getLongitude());
         addr.setLatitude(checked.getLatitude());
+	    addr.setDescription(AddressUtils.buildAddress(checked));
         result.putExtra(DATA_KEY, addr);
         //db.addAddress(checked);
         setResult(RESULT_OK, result);

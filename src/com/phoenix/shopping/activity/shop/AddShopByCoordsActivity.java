@@ -1,4 +1,4 @@
-package com.phoenix.shopping.activity;
+package com.phoenix.shopping.activity.shop;
 
 import android.app.Activity;
 import android.os.Bundle;

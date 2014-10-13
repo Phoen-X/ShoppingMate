@@ -1,4 +1,4 @@
-package com.phoenix.shopping.activity;
+package com.phoenix.shopping.activity.shop;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,7 +16,7 @@ import com.phoenix.shopping.data.SQLiteDataProvider;
 import com.phoenix.shopping.data.model.ShopAddress;
 import com.phoenix.shopping.listeners.SwipeDismissListener;
 
-import static com.phoenix.shopping.activity.ShopDescriptionSetupActivity.REQUEST_GET_DESCRIPTION;
+import static com.phoenix.shopping.activity.shop.ShopDescriptionSetupActivity.REQUEST_GET_DESCRIPTION;
 
 /**
  * Class description here.

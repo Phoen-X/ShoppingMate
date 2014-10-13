@@ -54,7 +54,7 @@ public class PurchaseTypesListActivity extends Activity {
     return new SwipeDismissListener.DismissCallbacks() {
       @Override
       public boolean canDismiss(final int position) {
-        return true;
+        return adapter.getCount() > 1;
       }
 
       @Override

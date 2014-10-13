@@ -40,8 +40,8 @@
   <string name="add_shop_longitude">longitude</string>
   <string name="add_shop_description">description</string>
   <string name="default_forget_time">20</string>
-  <string name="default_notify_distance">400</string>
-  <string name="default_check_frequency">10</string>
+  <string name="default_notify_distance">300</string>
+  <string name="default_check_frequency">5</string>
   <string name="add_shop_address">Enter address</string>
   <!-- preferences -->
   <string name="pref_gps_settings">GPS settings</string>
@@ -55,4 +55,6 @@
   <string name="pref_value_frequency">Your location is updated every %s minutes</string>
   <string name="pref_value_forget_time">You will not be notified during %s minutes after last notification</string>
   <string name="pref_value_react_distance">You will be notified when you are in %s meters after nearest shop</string>
+  <string name="menu_add_shop_on_map">On map</string>
+  <string name="pref_key_notify_distance">pref_notify_distance</string>
 </resources>

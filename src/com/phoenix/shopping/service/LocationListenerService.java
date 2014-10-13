@@ -48,6 +48,7 @@ public class LocationListenerService extends Service implements LocationListener
     private long lastShownList;
     private Bitmap notificationIcon;
     private SharedPreferences prefs;
+    public static Location lastLocation;
 
     @Override
     public IBinder onBind(Intent intent) {
@@ -99,6 +100,7 @@ public class LocationListenerService extends Service implements LocationListener
     @Override
     public void onLocationChanged(final Location location) {
         Log.d(LOGGING_TAG, "Location changed: " + location);
+        lastLocation = location;
 
         if (checkStoresLocation(db.getShopList(), location)) {
             Log.i(LOGGING_TAG, "Notifying user for shop location");
@@ -156,7 +158,7 @@ public class LocationListenerService extends Service implements LocationListener
     }
 
     private boolean isStoreInRange(final float distance) {
-        int range = Integer.valueOf(prefs.getString("pref_notify_distance", DISTANCE_TO_REACT));
+        int range = Integer.valueOf(prefs.getString(getString(R.string.pref_key_notify_distance), DISTANCE_TO_REACT));
         return distance <= range;
     }
 
@@ -205,4 +207,5 @@ public class LocationListenerService extends Service implements LocationListener
     private void unregisterUpdatesListener() {
         locationService.removeUpdates(this);
     }
+
 }

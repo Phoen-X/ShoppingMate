@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+  <item
+    android:id="@+id/menu_add_shop"
+    android:title="@string/add_btn_text"
+    android:showAsAction="ifRoom"
+    android:icon="@drawable/ic_action_accept"/>
+  <item android:id="@+id/menu_markers_clear"
+        android:title="Delete marker"
+        android:showAsAction="ifRoom"
+        android:icon="@android:drawable/ic_menu_delete"/>
+  <item
+    android:id="@+id/menu_move_camera"
+    android:title="Move to address"
+    android:showAsAction="ifRoom"
+    android:icon="@android:drawable/ic_menu_mylocation"/>
+</menu>

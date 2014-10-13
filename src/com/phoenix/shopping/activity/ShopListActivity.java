@@ -127,22 +127,23 @@ public class ShopListActivity extends Activity {
     protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
         if (data != null && resultCode == RESULT_OK && data.getExtras() != null) {
             final Object extra = data.getExtras().get(FindAddressActivity.DATA_KEY);
-            if (extra != null && extra instanceof Location) {
-                Location loc = (Location) extra;
+            if (extra != null && extra instanceof ShopAddress) {
+                ShopAddress addr = (ShopAddress) extra;
                 String description = "Unknown name";
 
                 Geocoder geocoder = new Geocoder(this);
                 final List<Address> addresses;
                 try {
-                    addresses = geocoder.getFromLocation(loc.getLatitude(), loc.getLongitude(), 1);
+                    addresses = geocoder.getFromLocation(addr.getLatitude(), addr.getLongitude(), 1);
                     if(!addresses.isEmpty()){
-                        description = addresses.get(0).getAddressLine(1);
+                        description = addresses.get(0).getAddressLine(0);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                addr.setDescription(description);
 
-                db.addAddress(loc.getLatitude(), loc.getLongitude(), description);
+                db.addAddress(addr.getLatitude(), addr.getLongitude(), addr.getDescription());
             }
         }
         fillShopList();

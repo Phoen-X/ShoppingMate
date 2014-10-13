@@ -21,6 +21,8 @@ import com.phoenix.shopping.data.DataProvider;
 import com.phoenix.shopping.data.SQLiteDataProvider;
 import com.phoenix.shopping.data.model.ShopAddress;
 
+import static com.phoenix.shopping.activity.ShopDescriptionSetupActivity.REQUEST_GET_DESCRIPTION;
+
 /**
  * Class description here.
  *
@@ -38,6 +40,7 @@ public class AddShopOnMapActivity extends Activity {
     Menu menu;
     final Object myLocationLock = new Object();
     private volatile boolean myLocationChanged = false;
+    private ShopAddress address;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,20 +122,22 @@ public class AddShopOnMapActivity extends Activity {
                 break;
             }
             case R.id.menu_add_shop: {
-
-                Location loc = new Location("NO_PROVIDER");
-                loc.setLongitude(addedPoint.longitude);
-                loc.setLatitude(addedPoint.latitude);
-                Intent result = new Intent();
-                result.putExtra(FindAddressActivity.DATA_KEY, loc);
-                //db.addAddress(checked);
-                setResult(RESULT_OK, result);
-                finish();
+                submitData();
+                break;
             }
             default:
                 return true;
         }
         return true;
+    }
+
+    private void submitData() {
+        ShopAddress address = new ShopAddress();
+        address.setLongitude(addedPoint.longitude);
+        address.setLatitude(addedPoint.latitude);
+        Intent intent = new Intent(this, ShopDescriptionSetupActivity.class);
+        intent.putExtra("address", address);
+        startActivityForResult(intent, REQUEST_GET_DESCRIPTION);
     }
 
     private void setUpShops() {
@@ -158,12 +163,23 @@ public class AddShopOnMapActivity extends Activity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         if (data != null && resultCode == RESULT_OK && data.getExtras() != null) {
-            if (requestCode == REQUEST_FIND_MOVE_ADDRESS) {
-                Location loc = (Location) data.getExtras().get(FindAddressActivity.DATA_KEY);
-                if (loc != null) {
-                    LatLng pos = new LatLng(loc.getLatitude(), loc.getLongitude());
+            switch (requestCode) {
+                case REQUEST_FIND_MOVE_ADDRESS: {
+                    Location loc = (Location) data.getExtras().get(FindAddressActivity.DATA_KEY);
+                    if (loc != null) {
+                        LatLng pos = new LatLng(loc.getLatitude(), loc.getLongitude());
 
-                    gmap.animateCamera(CameraUpdateFactory.newLatLng(pos));
+                        gmap.animateCamera(CameraUpdateFactory.newLatLng(pos));
+                    }
+                    break;
+                }
+                case REQUEST_GET_DESCRIPTION: {
+                    Intent result = new Intent();
+                    result.putExtra(FindAddressActivity.DATA_KEY, data.getSerializableExtra("address"));
+                    //db.addAddress(checked);
+                    setResult(RESULT_OK, result);
+                    finish();
+                    break;
                 }
             }
         }

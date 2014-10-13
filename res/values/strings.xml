@@ -57,4 +57,6 @@
   <string name="pref_value_react_distance">You will be notified when you are in %s meters after nearest shop</string>
   <string name="menu_add_shop_on_map">On map</string>
   <string name="pref_key_notify_distance">pref_notify_distance</string>
+  <string name="shop_desc_hint">Enter shop description</string>
+  <string name="shop_desc_save">Save</string>
 </resources>

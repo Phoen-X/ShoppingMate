@@ -5,4 +5,16 @@
               android:layout_width="match_parent"
               android:layout_height="match_parent">
 
+  <EditText
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/shopDesc"
+    android:hint="@string/shop_desc_hint"/>
+
+  <Button
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/shop_desc_save"
+    android:onClick="descriptionSubmitClick"
+    android:id="@+id/btnSubmit"/>
 </LinearLayout>

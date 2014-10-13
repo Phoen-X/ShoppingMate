@@ -5,10 +5,10 @@ package com.phoenix.shopping.data.model;
  * @author Vadim Vygulyarniy (http://www.luxoft.com).
  */
 public class Purchase {
-  private int id;
-  private String name;
-  private String type;
-  private String quantity;
+  private int     id;
+  private String  name;
+  private String  type;
+  private String  quantity;
   private boolean sold;
 
   public Purchase() {

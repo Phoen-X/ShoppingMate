@@ -1,17 +1,21 @@
 package com.phoenix.shopping.listeners;
 
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
+
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.ValueAnimator;
 import android.graphics.Rect;
 import android.os.SystemClock;
-import android.view.*;
+import android.view.MotionEvent;
+import android.view.VelocityTracker;
+import android.view.View;
+import android.view.ViewConfiguration;
+import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.ListView;
-
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 
 /**
  * Class description here.
@@ -19,47 +23,27 @@ import java.util.List;
  */
 public class SwipeDismissListener implements View.OnTouchListener {
   // Cached ViewConfiguration and system-wide constant values
-  private int mSlop;
-  private int mMinFlingVelocity;
-  private int mMaxFlingVelocity;
+  private int  mSlop;
+  private int  mMinFlingVelocity;
+  private int  mMaxFlingVelocity;
   private long mAnimationTime;
 
   // Fixed properties
-  private ListView mListView;
+  private ListView         mListView;
   private DismissCallbacks mCallbacks;
   private int mViewWidth = 1; // 1 and not 0 to prevent dividing by zero
 
   // Transient properties
-  private List<PendingDismissData> mPendingDismisses = new ArrayList<>();
-  private int mDismissAnimationRefCount = 0;
-  private float mDownX;
-  private float mDownY;
-  private boolean mSwiping;
-  private int mSwipingSlop;
+  private List<PendingDismissData> mPendingDismisses         = new ArrayList<>();
+  private int                      mDismissAnimationRefCount = 0;
+  private float           mDownX;
+  private float           mDownY;
+  private boolean         mSwiping;
+  private int             mSwipingSlop;
   private VelocityTracker mVelocityTracker;
-  private int mDownPosition;
-  private View mDownView;
-  private boolean mPaused;
-
-  /**
-   * The callback interface used by {@link com.phoenix.shopping.listeners.SwipeDismissListener} to inform its client
-   * about a successful dismissal of one or more list item positions.
-   */
-  public interface DismissCallbacks {
-    /**
-     * Called to determine whether the given position can be dismissed.
-     */
-    boolean canDismiss(int position);
-
-    /**
-     * Called when the user has indicated they she would like to dismiss one or more list item
-     * positions.
-     * @param listView               The originating {@link android.widget.ListView}.
-     * @param reverseSortedPositions An array of positions to dismiss, sorted in descending
-     *                               order for convenience.
-     */
-    void onDismiss(ListView listView, int[] reverseSortedPositions);
-  }
+  private int             mDownPosition;
+  private View            mDownView;
+  private boolean         mPaused;
 
   /**
    * Constructs a new swipe-to-dismiss touch listener for the given list view.
@@ -87,7 +71,8 @@ public class SwipeDismissListener implements View.OnTouchListener {
 
   /**
    * Returns an {@link android.widget.AbsListView.OnScrollListener} to be added to the {@link
-   * android.widget.ListView} using {@link android.widget.ListView#setOnScrollListener(android.widget.AbsListView.OnScrollListener)}.
+   * android.widget.ListView} using {@link android.widget.ListView#setOnScrollListener(android.widget.AbsListView
+   * .OnScrollListener)}.
    * If a scroll listener is already assigned, the caller should still pass scroll changes through
    * to this listener. This will ensure that this {@link com.phoenix.shopping.listeners.SwipeDismissListener} is
    * paused during list view scrolling.</p>
@@ -263,22 +248,6 @@ public class SwipeDismissListener implements View.OnTouchListener {
     return false;
   }
 
-  class PendingDismissData implements Comparable<PendingDismissData> {
-    public int position;
-    public View view;
-
-    public PendingDismissData(int position, View view) {
-      this.position = position;
-      this.view = view;
-    }
-
-    @Override
-    public int compareTo(PendingDismissData other) {
-      // Sort by descending position
-      return other.position - position;
-    }
-  }
-
   private void performDismiss(final View dismissView, final int dismissPosition) {
     // Animate the dismissed list item to zero-height and fire the dismiss callback when
     // all dismissed list item animations have completed. This triggers layout on each animation
@@ -339,5 +308,41 @@ public class SwipeDismissListener implements View.OnTouchListener {
 
     mPendingDismisses.add(new PendingDismissData(dismissPosition, dismissView));
     animator.start();
+  }
+
+  /**
+   * The callback interface used by {@link com.phoenix.shopping.listeners.SwipeDismissListener} to inform its client
+   * about a successful dismissal of one or more list item positions.
+   */
+  public interface DismissCallbacks {
+    /**
+     * Called to determine whether the given position can be dismissed.
+     */
+    boolean canDismiss(int position);
+
+    /**
+     * Called when the user has indicated they she would like to dismiss one or more list item
+     * positions.
+     * @param listView               The originating {@link android.widget.ListView}.
+     * @param reverseSortedPositions An array of positions to dismiss, sorted in descending
+     *                               order for convenience.
+     */
+    void onDismiss(ListView listView, int[] reverseSortedPositions);
+  }
+
+  class PendingDismissData implements Comparable<PendingDismissData> {
+    public int  position;
+    public View view;
+
+    public PendingDismissData(int position, View view) {
+      this.position = position;
+      this.view = view;
+    }
+
+    @Override
+    public int compareTo(PendingDismissData other) {
+      // Sort by descending position
+      return other.position - position;
+    }
   }
 }

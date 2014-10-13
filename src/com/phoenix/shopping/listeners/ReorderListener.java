@@ -14,36 +14,11 @@ import com.phoenix.shopping.adaptor.ReorderableAdapter;
 public class ReorderListener implements View.OnTouchListener {
 
   public static final String TAG = "REORDER";
-
-  private static class Point {
-    private int x;
-    private int y;
-
-    private Point(final int x, final int y) {
-      this.x = x;
-      this.y = y;
-    }
-
-    public int getX() {
-      return x;
-    }
-
-    public int getY() {
-      return y;
-    }
-
-    @Override
-    public String toString() {
-      return String.format("(%s;%s)", x, y);
-    }
-  }
-
-  private ListView listView;
-  private View reorderingItem;
-  private int reorderingIndex;
-  private Point startPoint;
   private static final int pickedOffset = 10;
-
+  private ListView listView;
+  private View     reorderingItem;
+  private int      reorderingIndex;
+  private Point    startPoint;
   public ReorderListener(ListView listView) {
     this.listView = listView;
   }
@@ -86,7 +61,8 @@ public class ReorderListener implements View.OnTouchListener {
             underItem != null &&
             Math.abs(reorderingItem.getY() - underItem.getY()) < (reorderingItem.getHeight() / 2)) {
           //if (!underItem.equals(lastFrom) || !reorderingItem.equals(lastTo)) {
-          Log.v(TAG, String.format("exchange item: %s -> %s", adapter.getItem(reorderingIndex), adapter.getItem(underIndex)));
+          Log.v(TAG, String.format("exchange item: %s -> %s", adapter.getItem(reorderingIndex), adapter.getItem(
+              underIndex)));
 
           adapter.exchange(reorderingIndex, underIndex);
           //underItem.setY(startPoint.getY());
@@ -132,7 +108,7 @@ public class ReorderListener implements View.OnTouchListener {
     int childCount = listView.getChildCount();
     for (int i = 0; i < childCount; i++) {
       child = listView.getChildAt(i);
-      if(child != null) {
+      if (child != null) {
         if (child.equals(exclude)) {
           continue;
         }
@@ -176,5 +152,28 @@ public class ReorderListener implements View.OnTouchListener {
     }
 
     return null;
+  }
+
+  private static class Point {
+    private int x;
+    private int y;
+
+    private Point(final int x, final int y) {
+      this.x = x;
+      this.y = y;
+    }
+
+    public int getX() {
+      return x;
+    }
+
+    public int getY() {
+      return y;
+    }
+
+    @Override
+    public String toString() {
+      return String.format("(%s;%s)", x, y);
+    }
   }
 }

@@ -15,7 +15,7 @@ import com.phoenix.shopping.util.ValidationUtils;
  */
 public class AddPurchaseTypeActivity extends Activity {
 
-  private EditText typeName;
+  private EditText     typeName;
   private DataProvider db;
 
   @Override
@@ -32,7 +32,7 @@ public class AddPurchaseTypeActivity extends Activity {
   }
 
   public void addPurchaseTypeSubmit(View v) {
-    if(ValidationUtils.isEmpty(typeName)) {
+    if (ValidationUtils.isEmpty(typeName)) {
       typeName.setError(getString(R.string.err_purchase_type_empty));
       return;
     }

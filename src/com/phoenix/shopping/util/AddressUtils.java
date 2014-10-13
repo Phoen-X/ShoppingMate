@@ -1,9 +1,9 @@
 package com.phoenix.shopping.util;
 
-import android.location.Address;
-
 import java.util.ArrayList;
 import java.util.List;
+
+import android.location.Address;
 
 /**
  * Class description here.
@@ -17,8 +17,8 @@ public class AddressUtils {
     }
     StringBuilder bldr = new StringBuilder();
     for (String part : parts) {
-      if(part != null && !StringUtils.isEmpty(part)) {
-        if(bldr.length() > 0 ) {
+      if (part != null && !StringUtils.isEmpty(part)) {
+        if (bldr.length() > 0) {
           bldr.append(", ");
         }
         bldr.append(part);

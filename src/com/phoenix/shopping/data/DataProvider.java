@@ -1,10 +1,10 @@
 package com.phoenix.shopping.data;
 
+import java.util.List;
+
 import android.location.Address;
 import com.phoenix.shopping.data.model.Purchase;
 import com.phoenix.shopping.data.model.ShopAddress;
-
-import java.util.List;
 
 /**
  * Class description here.

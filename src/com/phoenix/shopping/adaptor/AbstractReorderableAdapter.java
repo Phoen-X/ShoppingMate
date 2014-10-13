@@ -1,12 +1,12 @@
 package com.phoenix.shopping.adaptor;
 
-import android.content.Context;
-import android.database.DataSetObserver;
-import android.view.LayoutInflater;
-
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+
+import android.content.Context;
+import android.database.DataSetObserver;
+import android.view.LayoutInflater;
 
 /**
  * Class description here.
@@ -14,7 +14,7 @@ import java.util.List;
  */
 public abstract class AbstractReorderableAdapter<T> implements ReorderableAdapter {
   private final Context context;
-  private List<T> items = new LinkedList<T>();
+  private List<T>               items     = new LinkedList<T>();
   private List<DataSetObserver> observers = new ArrayList<DataSetObserver>();
   private LayoutInflater inflater;
 
@@ -44,6 +44,13 @@ public abstract class AbstractReorderableAdapter<T> implements ReorderableAdapte
       }
       items = newList;
       notifyDataChanged();
+    }
+  }
+
+  @Override
+  public void notifyDataChanged() {
+    for (DataSetObserver observer : observers) {
+      observer.onChanged();
     }
   }
 
@@ -100,12 +107,5 @@ public abstract class AbstractReorderableAdapter<T> implements ReorderableAdapte
   @Override
   public boolean isEmpty() {
     return items.isEmpty();
-  }
-
-  @Override
-  public void notifyDataChanged() {
-    for (DataSetObserver observer : observers) {
-      observer.onChanged();
-    }
   }
 }

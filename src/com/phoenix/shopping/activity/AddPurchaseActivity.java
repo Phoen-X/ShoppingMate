@@ -17,9 +17,9 @@ import com.phoenix.shopping.data.model.Purchase;
  */
 @SuppressWarnings("ConstantConditions")
 public class AddPurchaseActivity extends Activity {
-  private EditText name;
-  private EditText quantity;
-  private Spinner typeList;
+  private EditText     name;
+  private EditText     quantity;
+  private Spinner      typeList;
   private DataProvider db;
 
   @Override
@@ -43,7 +43,7 @@ public class AddPurchaseActivity extends Activity {
   }
 
   public void addPurchase(View view) {
-    if(validPurchase()) {
+    if (validPurchase()) {
 
       Purchase item = createPurchase();
       db.addPurchase(item);
@@ -72,7 +72,7 @@ public class AddPurchaseActivity extends Activity {
   }
 
   private boolean validPurchase() {
-    if(isEmpty(name)) {
+    if (isEmpty(name)) {
       name.setError(getString(R.string.err_purchase_name_empty));
       return false;
     }
@@ -80,7 +80,7 @@ public class AddPurchaseActivity extends Activity {
       quantity.setError(getString(R.string.err_purchase_quantity_empty));
       return false;
     }*/
-    if(!isEmpty(quantity) && !isNumber(quantity.getText().toString())) {
+    if (!isEmpty(quantity) && !isNumber(quantity.getText().toString())) {
       quantity.setError(getString(R.string.err_purchase_quantity_nan));
       return false;
     }

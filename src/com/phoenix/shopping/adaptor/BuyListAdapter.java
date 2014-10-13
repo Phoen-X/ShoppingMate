@@ -1,5 +1,7 @@
 package com.phoenix.shopping.adaptor;
 
+import java.util.List;
+
 import android.content.Context;
 import android.text.Spannable;
 import android.text.SpannableString;
@@ -14,37 +16,11 @@ import com.phoenix.shopping.R;
 import com.phoenix.shopping.data.model.Purchase;
 import com.phoenix.shopping.util.StringUtils;
 
-import java.util.List;
-
 /**
  * Class description here.
  * @author Vadim Vygulyarniy (http://www.luxoft.com).
  */
 public class BuyListAdapter extends ArrayAdapter<Purchase> {
-
-  static class ViewHolder {
-    private TextView itemName;
-    private TextView quantity;
-    private TextView itemType;
-
-    public ViewHolder(View view) {
-      this.itemName = (TextView) view.findViewById(R.id.itemName);
-      this.quantity = (TextView) view.findViewById(R.id.itemQuantity);
-      this.itemType = (TextView) view.findViewById(R.id.itemType);
-    }
-
-    public TextView getItemName() {
-      return itemName;
-    }
-
-    public TextView getQuantity() {
-      return quantity;
-    }
-
-    public TextView getItemType() {
-      return itemType;
-    }
-  }
 
   private final LayoutInflater inflater;
 
@@ -85,7 +61,7 @@ public class BuyListAdapter extends ArrayAdapter<Purchase> {
       itemView.getItemName().setTextAppearance(getContext(), R.style.item_name_not_bought);
       itemView.getItemName().setText(item.getName());
     }
-    if(!StringUtils.isEmpty(item.getQuantity())) {
+    if (!StringUtils.isEmpty(item.getQuantity())) {
       itemView.getQuantity().setText(String.valueOf(item.getQuantity()));
       itemView.getItemType().setText(item.getType());
     } else {
@@ -93,10 +69,33 @@ public class BuyListAdapter extends ArrayAdapter<Purchase> {
       itemView.getItemType().setText("");
     }
 
-
   }
 
   public void remove(int position) {
     remove(getItem(position));
+  }
+
+  static class ViewHolder {
+    private TextView itemName;
+    private TextView quantity;
+    private TextView itemType;
+
+    public ViewHolder(View view) {
+      this.itemName = (TextView) view.findViewById(R.id.itemName);
+      this.quantity = (TextView) view.findViewById(R.id.itemQuantity);
+      this.itemType = (TextView) view.findViewById(R.id.itemType);
+    }
+
+    public TextView getItemName() {
+      return itemName;
+    }
+
+    public TextView getQuantity() {
+      return quantity;
+    }
+
+    public TextView getItemType() {
+      return itemType;
+    }
   }
 }

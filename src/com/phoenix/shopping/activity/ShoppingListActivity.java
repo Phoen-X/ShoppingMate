@@ -25,7 +25,7 @@ import com.phoenix.shopping.service.LocationListenerService;
 public class ShoppingListActivity extends Activity {
   private static final int ADD_PURCHASE = 1;
   private DataProvider db;
-  private ListView listView;
+  private ListView     listView;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -45,13 +45,58 @@ public class ShoppingListActivity extends Activity {
     loadBuyList();
   }
 
+  @Override
+  protected void onDestroy() {
+    //stopService(locationListener);
+    super.onDestroy();
+  }
+
+  @Override
+  public boolean onCreateOptionsMenu(final Menu menu) {
+    MenuInflater inflater = getMenuInflater();
+    inflater.inflate(R.menu.main_menu, menu);
+    return true;
+  }
+
+  @Override
+  public boolean onOptionsItemSelected(final MenuItem item) {
+    switch (item.getItemId()) {
+      case R.id.menu_types_settings: {
+        Intent typeListActivity = new Intent(this, PurchaseTypesListActivity.class);
+        startActivity(typeListActivity);
+        break;
+      }
+      case R.id.menu_add_purchase: {
+        Intent addActivity = new Intent(this, AddPurchaseActivity.class);
+        startActivityForResult(addActivity, ADD_PURCHASE);
+        break;
+      }
+      case R.id.menu_address_settings: {
+        Intent shopsActivity = new Intent(this, ShopListActivity.class);
+        startActivity(shopsActivity);
+        break;
+      }
+      case R.id.menu_settings: {
+        Intent prefsIntent = new Intent(this, MainPreferencesActivity.class);
+        startActivity(prefsIntent);
+        break;
+      }
+    }
+    return super.onOptionsItemSelected(item);
+  }
+
+  @Override
+  protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+    loadBuyList();
+  }
+
   private void loadBuyList() {
     final BuyListAdapter adapter = new BuyListAdapter(this, db.getPurchaseList());
     listView.setAdapter(adapter);
     final SwipeDismissListener touchListener = new SwipeDismissListener(listView,
                                                                         getDismissCallback(adapter));
     listView.setOnTouchListener(touchListener);
-    /*View emptyView = getLayoutInflater().inflate(R.layout.empty_list_view, null);
+  /*View emptyView = getLayoutInflater().inflate(R.layout.empty_list_view, null);
     listView.setEmptyView(emptyView);*/
     listView.setOnScrollListener(touchListener.makeScrollListener());
     listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -85,54 +130,5 @@ public class ShoppingListActivity extends Activity {
         adapter.notifyDataSetChanged();
       }
     };
-  }
-
-  @Override
-  public boolean onCreateOptionsMenu(final Menu menu) {
-    MenuInflater inflater = getMenuInflater();
-    inflater.inflate(R.menu.main_menu, menu);
-    return true;
-  }
-
-  @Override
-  public boolean onOptionsItemSelected(final MenuItem item) {
-    switch (item.getItemId()) {
-      case R.id.menu_types_settings: {
-        Intent typeListActivity = new Intent(this, PurchaseTypesListActivity.class);
-        startActivity(typeListActivity);
-        break;
-      }
-      case R.id.menu_add_purchase: {
-        Intent addActivity = new Intent(this, AddPurchaseActivity.class);
-        startActivityForResult(addActivity, ADD_PURCHASE);
-        break;
-      }
-      case R.id.menu_address_settings: {
-        Intent shopsActivity = new Intent(this, ShopListActivity.class);
-        startActivity(shopsActivity);
-        break;
-      }
-      case R.id.menu_settings: {
-        Intent prefsIntent = new Intent(this, MainPreferencesActivity.class);
-        startActivity(prefsIntent);
-        break;
-      }
-      case R.id.menu_stop_gps: {
-        stopService(new Intent(this, LocationListenerService.class));
-        break;
-      }
-    }
-    return super.onOptionsItemSelected(item);
-  }
-
-  @Override
-  protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-    loadBuyList();
-  }
-
-  @Override
-  protected void onDestroy() {
-    //stopService(locationListener);
-    super.onDestroy();
   }
 }

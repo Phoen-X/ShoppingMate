@@ -1,5 +1,9 @@
 package com.phoenix.shopping.data;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
@@ -10,43 +14,36 @@ import com.phoenix.shopping.data.model.Purchase;
 import com.phoenix.shopping.data.model.ShopAddress;
 import com.phoenix.shopping.util.AddressUtils;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-
 /**
  * Class description here.
  * @author Vadim Vygulyarniy (http://www.luxoft.com).
  */
 public class SQLiteDataProvider extends SQLiteOpenHelper implements DataProvider {
-  private static final String DB_NAME = "com.phoenix.shopping.data.BUYLIST_DB";
-  private static final int DB_VERSION = 2;
-  public static final String PURCHASE_LIST_TABLE = "PURCHASE_LIST";
-  public static final String PURCHASE_TYPES_TABLE = "PURCHASE_TYPE";
-  public static final String SHOP_ADDRESSES_TABLE = "SHOP_ADD";
-
+  public static final  String PURCHASE_LIST_TABLE  = "PURCHASE_LIST";
   private static final String CREATE_PURCHASE_TABLE_SQL = "CREATE TABLE " + PURCHASE_LIST_TABLE + " " +
                                                           "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                                           "type VARCHAR(10), " +
                                                           "name VARCHAR(50) NOT NULL, " +
                                                           "sold VARCHAR(1), " +
                                                           "quantity VARCHAR(10) );";
-
+  public static final  String PURCHASE_TYPES_TABLE = "PURCHASE_TYPE";
   private static final String CREATE_PURCHASE_TYPES_TABLE_SQL = "CREATE TABLE " + PURCHASE_TYPES_TABLE + " " +
                                                                 "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                                                 "name VARCHAR(10) NOT NULL);";
-
-  private static final String CREATE_SHOP_ADDRESSES_TABLE_SQL = "CREATE TABLE " + SHOP_ADDRESSES_TABLE+ " " +
+  public static final  String SHOP_ADDRESSES_TABLE = "SHOP_ADD";
+  private static final String CREATE_SHOP_ADDRESSES_TABLE_SQL = "CREATE TABLE " + SHOP_ADDRESSES_TABLE + " " +
                                                                 "(_id INTEGER PRIMARY KEY AUTOINCREMENT, " +
                                                                 "latitude DOUBLE NOT NULL, " +
                                                                 "longitude DOUBLE NOT NULL," +
-                                                                "description VARCHAR(100) NOT NULL DEFAULT '[NO_DESCRIPTION]');";
-
+                                                                "description VARCHAR(100) NOT NULL DEFAULT " +
+                                                                "'[NO_DESCRIPTION]');";
+  private static final String DB_NAME              = "com.phoenix.shopping.data.BUYLIST_DB";
+  private static final int    DB_VERSION           = 2;
   private static final String INSERT_PURCHASE_TYPE_SQL = "INSERT INTO PURCHASE_TYPE (name) VALUES ('%s');";
-  private static final String DROP_TABLE_SQL = "DROP TABLE IF EXISTS %s;" ;
-  private static final String DROP_PURCHASE_TABLE_SQL = String.format(DROP_TABLE_SQL, PURCHASE_LIST_TABLE);
-  private static final String DROP_PURCHASE_TYPES_SQL = String.format(DROP_TABLE_SQL, PURCHASE_TYPES_TABLE);
-  private static final String DROP_SHOP_ADDRESSES_SQL = String.format(DROP_TABLE_SQL, SHOP_ADDRESSES_TABLE);
+  private static final String DROP_TABLE_SQL           = "DROP TABLE IF EXISTS %s;";
+  private static final String DROP_PURCHASE_TABLE_SQL  = String.format(DROP_TABLE_SQL, PURCHASE_LIST_TABLE);
+  private static final String DROP_PURCHASE_TYPES_SQL  = String.format(DROP_TABLE_SQL, PURCHASE_TYPES_TABLE);
+  private static final String DROP_SHOP_ADDRESSES_SQL  = String.format(DROP_TABLE_SQL, SHOP_ADDRESSES_TABLE);
 
   List<String> purchaseTypes = Arrays.asList("шт");
 
@@ -124,25 +121,6 @@ public class SQLiteDataProvider extends SQLiteOpenHelper implements DataProvider
   }
 
   @Override
-  public void onCreate(final SQLiteDatabase db) {
-    db.execSQL(DROP_PURCHASE_TABLE_SQL);
-    db.execSQL(DROP_PURCHASE_TYPES_SQL);
-    db.execSQL(DROP_SHOP_ADDRESSES_SQL);
-
-    db.execSQL(CREATE_PURCHASE_TABLE_SQL);
-    db.execSQL(CREATE_PURCHASE_TYPES_TABLE_SQL);
-    db.execSQL(CREATE_SHOP_ADDRESSES_TABLE_SQL);
-    for (String purchaseType : purchaseTypes) {
-      db.execSQL(String.format(INSERT_PURCHASE_TYPE_SQL, purchaseType));
-    }
-  }
-
-  @Override
-  public void onUpgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
-    onCreate(db);
-  }
-
-  @Override
   public void addPurchaseType(String type) {
     ContentValues row = new ContentValues();
     row.put("name", type);
@@ -192,7 +170,7 @@ public class SQLiteDataProvider extends SQLiteOpenHelper implements DataProvider
 
   @Override
   public void removeAddress(final ShopAddress itemToDelete) {
-    getWritableDatabase().delete(SHOP_ADDRESSES_TABLE, "_id = ? ", new String[] {String.valueOf(itemToDelete.getId())});
+    getWritableDatabase().delete(SHOP_ADDRESSES_TABLE, "_id = ? ", new String[]{String.valueOf(itemToDelete.getId())});
   }
 
   @Override
@@ -200,5 +178,24 @@ public class SQLiteDataProvider extends SQLiteOpenHelper implements DataProvider
     ContentValues row = new ContentValues();
     row.put("sold", sold ? "X" : null);
     getWritableDatabase().update(PURCHASE_LIST_TABLE, row, "_id = " + id, null);
+  }
+
+  @Override
+  public void onCreate(final SQLiteDatabase db) {
+    db.execSQL(DROP_PURCHASE_TABLE_SQL);
+    db.execSQL(DROP_PURCHASE_TYPES_SQL);
+    db.execSQL(DROP_SHOP_ADDRESSES_SQL);
+
+    db.execSQL(CREATE_PURCHASE_TABLE_SQL);
+    db.execSQL(CREATE_PURCHASE_TYPES_TABLE_SQL);
+    db.execSQL(CREATE_SHOP_ADDRESSES_TABLE_SQL);
+    for (String purchaseType : purchaseTypes) {
+      db.execSQL(String.format(INSERT_PURCHASE_TYPE_SQL, purchaseType));
+    }
+  }
+
+  @Override
+  public void onUpgrade(final SQLiteDatabase db, final int oldVersion, final int newVersion) {
+    onCreate(db);
   }
 }

@@ -1,5 +1,7 @@
 package com.phoenix.shopping.adaptor;
 
+import java.util.List;
+
 import android.content.Context;
 import android.location.Address;
 import android.view.LayoutInflater;
@@ -10,8 +12,6 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.phoenix.shopping.R;
 
-import java.util.List;
-
 /**
  * Class description here.
  * @author Vadim Vygulyarniy (http://www.luxoft.com).
@@ -19,30 +19,6 @@ import java.util.List;
 public class FoundShopsAdapter extends ArrayAdapter<Address> {
   private final LayoutInflater inflater;
   private int checkedAddress = -1;
-
-  static class ViewHolder {
-    private ImageView selectedBtn;
-    private TextView mainAddress;
-    private TextView secondaryAddress;
-
-    public ViewHolder(View view) {
-      this.selectedBtn = (ImageView) view.findViewById(R.id.selectedImg);
-      this.mainAddress = (TextView) view.findViewById(R.id.mainAddress);
-      this.secondaryAddress = (TextView) view.findViewById(R.id.secondaryAddress);
-    }
-
-    public ImageView getSelectedBtn() {
-      return selectedBtn;
-    }
-
-    public TextView getMainAddress() {
-      return mainAddress;
-    }
-
-    public TextView getSecondaryAddress() {
-      return secondaryAddress;
-    }
-  }
 
   public FoundShopsAdapter(Context context, List<Address> addresses) {
     super(context, 0, addresses);
@@ -121,5 +97,29 @@ public class FoundShopsAdapter extends ArrayAdapter<Address> {
 
   public Address getChecked() {
     return checkedAddress >= 0 ? getItem(checkedAddress) : null;
+  }
+
+  static class ViewHolder {
+    private ImageView selectedBtn;
+    private TextView  mainAddress;
+    private TextView  secondaryAddress;
+
+    public ViewHolder(View view) {
+      this.selectedBtn = (ImageView) view.findViewById(R.id.selectedImg);
+      this.mainAddress = (TextView) view.findViewById(R.id.mainAddress);
+      this.secondaryAddress = (TextView) view.findViewById(R.id.secondaryAddress);
+    }
+
+    public ImageView getSelectedBtn() {
+      return selectedBtn;
+    }
+
+    public TextView getMainAddress() {
+      return mainAddress;
+    }
+
+    public TextView getSecondaryAddress() {
+      return secondaryAddress;
+    }
   }
 }

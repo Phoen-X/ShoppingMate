@@ -18,7 +18,7 @@ import com.phoenix.shopping.listeners.SwipeDismissListener;
 public class PurchaseTypesListActivity extends Activity {
 
   private DataProvider db;
-  private ListView typesList;
+  private ListView     typesList;
 
   @Override
   public void onCreate(Bundle savedInstanceState) {
@@ -27,6 +27,13 @@ public class PurchaseTypesListActivity extends Activity {
     db = new SQLiteDataProvider(this);
     this.typesList = (ListView) findViewById(R.id.typesList);
     fillPurchaseTypesList();
+  }
+
+  @Override
+  protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
+    if (resultCode == RESULT_OK) {
+      fillPurchaseTypesList();
+    }
   }
 
   private void fillPurchaseTypesList() {
@@ -41,13 +48,6 @@ public class PurchaseTypesListActivity extends Activity {
   public void addPurchaseTypeClick(View view) {
     Intent additionAction = new Intent(this, AddPurchaseTypeActivity.class);
     startActivityForResult(additionAction, 1);
-  }
-
-  @Override
-  protected void onActivityResult(final int requestCode, final int resultCode, final Intent data) {
-    if (resultCode == RESULT_OK) {
-      fillPurchaseTypesList();
-    }
   }
 
   private SwipeDismissListener.DismissCallbacks getDismissCallback(final ArrayAdapter<String> adapter) {

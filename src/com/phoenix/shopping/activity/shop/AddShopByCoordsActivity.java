@@ -37,20 +37,21 @@ public class AddShopByCoordsActivity extends Activity {
   }
 
   public void addShopByCoords(View view) {
-    if(ValidationUtils.isEmpty(description)) {
+    if (ValidationUtils.isEmpty(description)) {
       description.setError("Enter description");
       return;
     }
-    if(ValidationUtils.isEmpty(latitude) || !ValidationUtils.isDouble(latitude)) {
+    if (ValidationUtils.isEmpty(latitude) || !ValidationUtils.isDouble(latitude)) {
       latitude.setError("Enter latitude");
       return;
     }
-    if(ValidationUtils.isEmpty(longitude) || !ValidationUtils.isDouble(longitude)) {
+    if (ValidationUtils.isEmpty(longitude) || !ValidationUtils.isDouble(longitude)) {
       longitude.setError("Enter longitude");
       return;
     }
 
-    db.addAddress(Double.valueOf(latitude.getText().toString()), Double.valueOf(longitude.getText().toString()), description.getText().toString());
+    db.addAddress(Double.valueOf(latitude.getText().toString()), Double.valueOf(longitude.getText().toString()),
+                  description.getText().toString());
     setResult(RESULT_OK);
     finish();
 

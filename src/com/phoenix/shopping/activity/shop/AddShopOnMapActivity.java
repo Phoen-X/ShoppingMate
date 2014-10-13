@@ -100,9 +100,9 @@ public class AddShopOnMapActivity extends Activity {
     if (data != null && resultCode == RESULT_OK && data.getExtras() != null) {
       switch (requestCode) {
         case REQUEST_FIND_MOVE_ADDRESS: {
-          Location loc = (Location) data.getExtras().get(FindAddressActivity.DATA_KEY);
-          if (loc != null) {
-            LatLng pos = new LatLng(loc.getLatitude(), loc.getLongitude());
+          ShopAddress address = (ShopAddress) data.getSerializableExtra(FindAddressActivity.DATA_KEY);
+          if (address != null) {
+            LatLng pos = new LatLng(address.getLatitude(), address.getLongitude());
 
             gmap.animateCamera(CameraUpdateFactory.newLatLng(pos));
           }

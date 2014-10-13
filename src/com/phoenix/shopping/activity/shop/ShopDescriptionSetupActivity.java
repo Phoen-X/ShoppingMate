@@ -25,7 +25,8 @@ public class ShopDescriptionSetupActivity extends Activity {
     super.onCreate(savedInstanceState);
     setContentView(R.layout.shop_description_setup);
     editDescription = (EditText) findViewById(R.id.shopDesc);
-    address = (ShopAddress) getIntent().getParcelableExtra("address");
+    address = (ShopAddress) getIntent().getSerializableExtra("address");
+    Log.d(TAG, "address is " + address);
     if (address != null) {
       editDescription.setText(address.getDescription());
     }

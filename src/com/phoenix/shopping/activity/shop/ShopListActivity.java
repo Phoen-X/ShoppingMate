@@ -9,10 +9,10 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.PopupMenu;
 import com.phoenix.shopping.R;
+import com.phoenix.shopping.adaptor.ShopListAdapter;
 import com.phoenix.shopping.data.DataProvider;
 import com.phoenix.shopping.data.SQLiteDataProvider;
 import com.phoenix.shopping.data.model.ShopAddress;
@@ -77,8 +77,7 @@ public class ShopListActivity extends Activity {
   }
 
   private void fillShopList() {
-    final ArrayAdapter<ShopAddress> adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1,
-                                                                 db.getShopList());
+    final ShopListAdapter adapter = new ShopListAdapter(this, db.getShopList());
     shopList.setAdapter(adapter);
     final SwipeDismissListener touchListener = new SwipeDismissListener(shopList,
                                                                         getDismissCallback(adapter));
@@ -87,7 +86,7 @@ public class ShopListActivity extends Activity {
     shopList.setEmptyView(findViewById(R.id.emptyListView));
   }
 
-  private SwipeDismissListener.DismissCallbacks getDismissCallback(final ArrayAdapter<ShopAddress> adapter) {
+  private SwipeDismissListener.DismissCallbacks getDismissCallback(final ShopListAdapter adapter) {
     return new SwipeDismissListener.DismissCallbacks() {
       @Override
       public boolean canDismiss(final int position) {

@@ -1,36 +1,36 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android">
+<PreferenceScreen xmlns:a="http://schemas.android.com/apk/res/android">
   <PreferenceCategory
-    android:title="@string/pref_gps_settings"
-    android:key="pref_group_gps">
+    a:key="pref_group_gps"
+    a:title="@string/pref_gps_settings">
     <SwitchPreference
-      android:key="pref_gps_on"
-      android:title="@string/pref_gps_enabled"
-      android:defaultValue="true" />
+      a:defaultValue="true"
+      a:key="pref_gps_on"
+      a:title="@string/pref_gps_enabled" />
     <EditTextPreference
-      android:key="pref_check_frequency"
-      android:title="@string/pref_check_frequency"
-      android:dependency="pref_gps_on"
-      android:inputType="number"
-      android:defaultValue="@string/default_check_frequency"
-      android:maxLength="3"
-      android:numeric="integer" />
+      a:defaultValue="@string/default_check_frequency"
+      a:dependency="pref_gps_on"
+      a:inputType="number"
+      a:key="pref_check_frequency"
+      a:maxLength="3"
+      a:numeric="integer"
+      a:title="@string/pref_check_frequency" />
     <EditTextPreference
-      android:key="pref_forget_time"
-      android:title="@string/pref_forget_time"
-      android:inputType="number"
-      android:dependency="pref_gps_on"
-      android:defaultValue="@string/default_forget_time"
-      android:numeric="integer"
-      android:maxLength="3" />
+      a:defaultValue="@string/default_forget_time"
+      a:dependency="pref_gps_on"
+      a:inputType="number"
+      a:key="pref_forget_time"
+      a:maxLength="3"
+      a:numeric="integer"
+      a:title="@string/pref_forget_time" />
     <EditTextPreference
-      android:key="pref_notify_distance"
-      android:title="@string/pref_notify_distance"
-      android:dependency="pref_gps_on"
-      android:defaultValue="@string/default_notify_distance"
-      android:numeric="integer"
-      android:inputType="number"
-      android:maxLength="5" />
+      a:defaultValue="@string/default_notify_distance"
+      a:dependency="pref_gps_on"
+      a:inputType="number"
+      a:key="pref_notify_distance"
+      a:maxLength="5"
+      a:numeric="integer"
+      a:title="@string/pref_notify_distance" />
   </PreferenceCategory>
 </PreferenceScreen>

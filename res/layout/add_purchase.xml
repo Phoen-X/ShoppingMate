@@ -5,7 +5,7 @@
   android:layout_width="fill_parent"
 	android:layout_height="fill_parent"
 	android:orientation="vertical"
-  tools:context=".activity.AddPurchaseActivity">
+  tools:context=".activity.AddPurchaseTypeActivity">
 
 	<EditText
 		android:id="@+id/name"
